@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      
+      <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- mobile metas -->
@@ -151,8 +151,8 @@
                      <div class="product-box">
                         <i><img src="icon/plata.png"/></i>
                         <h3>Plata Təmiri</h3>
-                        <span>3az                </span>
-                        <button class="service-btn" onclick="window.location.href='#';">Səbətə at🛒</button>
+                        <span>3az</span>
+                        <button onclick="addToCart('Line Follower')">Səbətə at 🛒</button>
                      </div>
                   </div>
                </div>
@@ -202,21 +202,12 @@
       <script src="js/custom.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         });
-         
+         function addToCart(productName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + " səbətə əlavə edildi!");
+         }
       </script> 
    </body>
 </html>
