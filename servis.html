@@ -151,8 +151,8 @@
                      <div class="product-box">
                         <i><img src="icon/Plata Təmiri.png"/></i>
                         <h3>Plata Təmiri</h3>
-                        <span>3az</span>
-                        <button onclick="addToCart('Plata Təmiri')">Səbətə at 🛒</button>
+                        <span>3₼</span>
+                        <button onclick="addToCart('Plata Təmiri',3.0)">Səbətə at 🛒</button>
                      </div>
                   </div>
                </div>
@@ -202,12 +202,25 @@
       <script src="js/custom.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script>
-         function addToCart(productName) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(productName);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(productName + " səbətə əlavə edildi!");
-         }
+         function addToCart(productName, productPrice) {
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+   
+   // Check if the product already exists in the cart
+   let existingProduct = cart.find(item => item.name === productName);
+
+   if (existingProduct) {
+      // If the product exists, increase the quantity
+      existingProduct.quantity++;
+   } else {
+      // If the product does not exist, add a new item with quantity 1
+      cart.push({ name: productName, price: productPrice, quantity: 1 });
+   }
+
+   // Save the updated cart back to localStorage
+   localStorage.setItem('cart', JSON.stringify(cart));
+   
+   alert(productName + " səbətə əlavə edildi!");
+}
       </script> 
    </body>
 </html>
