@@ -268,7 +268,7 @@
             localStorage.setItem('cart', JSON.stringify(cart));
          }
 
-         // Remove item from cart
+         
          function removeItem(index) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.splice(index, 1);
