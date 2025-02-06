@@ -125,7 +125,14 @@
 
 
 
-    
+      <div class="social-icons">
+         <a href="https://wa.me/994556983741" target="_blank">
+            <img src="images/vplogo.png" alt="WhatsApp" class="social-icon">
+         </a>
+         <a href="https://www.instagram.com/amperelektron_baku/" target="_blank">
+            <img src="images/instalogo.png" alt="Instagram" class="social-icon">
+         </a>
+      </div>
       <!--  footer --> 
 
 
@@ -181,5 +188,41 @@
          });
          
       </script> 
+       <style>
+         .social-icons {
+            position: fixed;
+            bottom: -100px; /* Initially set below the screen */
+            right: 20px;
+            z-index: 1000;
+            animation: slideUp 6.0s ease-in-out forwards; /* Slide up effect */
+         }
+   
+         /* Slide up animation */
+         @keyframes slideUp {
+            0% {
+               bottom: -100px; /* Start below the screen */
+               opacity: 0;
+            }
+            100% {
+               bottom: 85px; /* Final position at the bottom */
+               opacity: 1; /* Fade in */
+            }
+         }
+   
+         .social-icon {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            background-color: rgb(255, 255, 255); /* Light background */
+            border-radius: 10px; /* Rounded corners */
+            padding: 5px;
+         }
+   
+         .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+         }
+      </style>
    </body>
 </html>
