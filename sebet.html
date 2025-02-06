@@ -174,7 +174,7 @@
                 width: 30px;
                 font-size: 14px; /* Adjust input field size */
             }
-        }
+        
 
         /* Ensure the modal content is centered on mobile */
         @media (max-width: 767px) {
@@ -184,7 +184,6 @@
             }
         }
     </style>
-    
 </head>
 <body class="main-layout product_page">
 <!-- loader -->
@@ -272,7 +271,7 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Səbəti Təsdiqlə</h3>
+        <h3>Səbəti Təsdiqle</h3>
         <form id="orderForm" action="https://formsubmit.co/omrmmmdli736@gmail.com" method="POST" onsubmit="submitOrder(event)">
             <input type="text" name="Ad" placeholder="Ad" required><br><br>
             <input type="text" name="Soyad" placeholder="Soyad" required><br><br>
@@ -421,8 +420,6 @@
         console.error('Error submitting order:', error);
     });
 }
-
-    // Function to clear the cart
 function clearCart() {
     localStorage.removeItem('cart');  // Removes the cart from localStorage
     alert("Səbət təmizləndi!");  // Optional: Shows an alert to notify the user
