@@ -275,7 +275,7 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Səbəti Təsdiqle</h3>
+        <h3>Səbəti Təsdiqlə</h3>
         <form id="orderForm" action="https://formsubmit.co/5517a9bd39f42ffb03a27ac54fa047e8" method="POST" onsubmit="submitOrder(event)">
             <input type="text" name="Ad" placeholder="Ad" required><br><br>
             <input type="text" name="Soyad" placeholder="Soyad" required><br><br>
@@ -283,7 +283,7 @@
             <textarea name="cartDetails" style="display:none;"></textarea>
             <textarea name="totalPrice" style="display:none;"></textarea>
             <!-- Hidden fields for Formsubmit -->
-            <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html"> <!-- Add your thank-you page URL -->
+            <input type="hidden" name="_next" value="thank-you.html"> <!-- Add your thank-you page URL -->
             <input type="hidden" name="_subject" value="Yeni Sifariş Alındı"> <!-- Customize the email subject -->
             <input type="submit" value="Göndər" class="green-btn">
         </form>
@@ -409,7 +409,7 @@
 
         // Submit the form
         event.target.submit();
-
+        window.location.href = "thank-you.html";  // This line redirects after form submission
         // Clear the cart from localStorage after submission
         cart = [];
         updateLocalStorage();
