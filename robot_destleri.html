@@ -152,7 +152,7 @@
                         <i><img src="icon/Line Follower.png"/></i>
                         <h3>Line Follower</h3>
                         <span>10₼</span>
-                        <button onclick="addToCart('Line Follower')">Səbətə at 🛒</button>
+                        <button onclick="addToCart('Line Follower',10.0)">Səbətə at 🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
@@ -160,7 +160,7 @@
                         <i><img src="icon/Sumo.png"/></i>
                         <h3>Sumo</h3>
                         <span>5₼</span>
-                        <button onclick="addToCart('Sumo')">Səbətə at 🛒</button>
+                        <button onclick="addToCart('Sumo',5.0)">Səbətə at 🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
@@ -168,7 +168,7 @@
                         <i><img src="icon/Dron.png"/></i>
                         <h3>Dron</h3>
                         <span>30₼</span>
-                        <<button onclick="addToCart('Dron')">Səbətə at 🛒</button>
+                        <<button onclick="addToCart('Dron', 30.0)">Səbətə at 🛒</button>
                      </div>
                   </div>
                </div>
@@ -218,12 +218,25 @@
       <script src="js/custom.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script>
-         function addToCart(productName) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(productName);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(productName + " səbətə əlavə edildi!");
-         }
+         function addToCart(productName, productPrice) {
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+   
+   // Check if the product already exists in the cart
+   let existingProduct = cart.find(item => item.name === productName);
+
+   if (existingProduct) {
+      // If the product exists, increase the quantity
+      existingProduct.quantity++;
+   } else {
+      // If the product does not exist, add a new item with quantity 1
+      cart.push({ name: productName, price: productPrice, quantity: 1 });
+   }
+
+   // Save the updated cart back to localStorage
+   localStorage.setItem('cart', JSON.stringify(cart));
+   
+   alert(productName + " səbətə əlavə edildi!");
+}
       </script> 
    </body>
 </html>
