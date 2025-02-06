@@ -1,188 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
     <title>Səbət</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- style css -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- fevicon -->
     <link rel="icon" href="images/fevicon.png" type="image/gif" />
-    <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-    <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <style>
-        /* Add custom styles for the modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+        /* General styles */
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
+.modal-content { 
+    background-color: #fefefe; 
+    margin: 15% auto; 
+    padding: 20px; 
+    border: 1px solid #888; 
+    width: 80%; 
+    border-radius: 10px; /* Rounded corners for modal */
+}
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+.close { 
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+}
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+.close:hover { 
+    color: black; 
+    text-decoration: none; 
+    cursor: pointer; 
+}
 
-        .cart-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+/* Cart Item Styles */
+.cart-item { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; /* Rounded corners for cart item */
+    background-color: #f9f9f9;
+}
 
-        .cart-item img {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
-        }
+.cart-item img { 
+    width: 50px; 
+    height: 50px; 
+    margin-right: 15px; 
+    border-radius: 5px; /* Rounded image corners */
+}
 
-        .cart-item-details {
-            flex: 1;
-        }
+.cart-item-details { 
+    flex: 1; 
+    padding-right: 15px; /* Added spacing for better layout */
+}
 
-        .quantity-btn {
-            font-size: 18px;
-            background-color: #ddd;
-            border: none;
-            padding: 5px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            text-align: center;
-        }
+/* Quantity Buttons */
+.quantity-btn { 
+    font-size: 18px; 
+    background-color: #ddd; 
+    border: none; 
+    padding: 5px; 
+    cursor: pointer; 
+    width: 30px; 
+    height: 30px; 
+    text-align: center; 
+    border-radius: 5px; /* Rounded buttons */
+}
 
-        .quantity-btn:hover {
-            background-color: #bbb;
-        }
+.quantity-btn:hover { 
+    background-color: #bbb; 
+}
 
-        .quantity-input {
-            width: 40px;
-            text-align: center;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            padding: 5px;
-        }
+.quantity-input { 
+    width: 40px; 
+    text-align: center; 
+    font-size: 16px; 
+    border: 1px solid #ddd; 
+    padding: 5px; 
+    border-radius: 5px; /* Rounded input field */
+}
 
-        .cart-total {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
+/* Total Price */
+.cart-total { 
+    margin-top: 20px; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
 
-        .back-btn {
-            font-size: 16px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+/* Action Buttons */
+.green-btn { 
+    background-color: #28a745; 
+    font-size: 18px; 
+    color: white; 
+    border: none; 
+    padding: 10px 25px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    font-weight: bold; 
+}
 
-        .back-btn:hover {
-            opacity: 0.8;
-        }
+.green-btn:hover { 
+    opacity: 0.8; 
+}
 
-        .green-btn {
-            background-color: #28a745;
-            font-size: 18px;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+.back-btn { 
+    font-size: 16px; 
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
 
-        .green-btn:hover {
-            opacity: 0.8;
-        }
-        @media (max-width: 767px) {
-    .green-btn {
-        padding: 10px 20px; /* Adjust padding to make the button more compact */
-        font-size: 14px; /* Smaller font size */
-        width: auto; /* Let the button size adjust based on content */
-        display: inline-block; /* Ensure buttons don't take up the entire width */
-        margin: 5px 0; /* Add some space between the buttons */
-        border-radius: 5px; /* Optional: Make the button corners rounded */
+.back-btn:hover { 
+    opacity: 0.8; 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    /* Modal */
+    .modal-content { 
+        width: 90%; 
+        padding: 15px; 
+        border-radius: 10px; 
+    }
+
+    /* Cart Item */
+    .cart-item { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        padding: 15px; 
+        margin-bottom: 15px; 
+        border-radius: 10px; 
+    }
+
+    .cart-item img { 
+        width: 40px; 
+        height: 40px; 
+    }
+
+    /* Quantity Buttons */
+    .quantity-btn { 
+        width: 25px; 
+        height: 25px; 
+        font-size: 16px; 
+        border-radius: 5px; 
+    }
+
+    .quantity-input { 
+        width: 30px; 
+        font-size: 14px; 
+    }
+
+    /* Button styling on mobile */
+    .green-btn { 
+        padding: 10px 20px; 
+        font-size: 14px; 
+        width: auto; 
+        display: inline-block; 
+        margin: 5px 0; 
+        border-radius: 5px; 
+    }
+
+    .back-btn { 
+        font-size: 14px; 
+        padding: 8px 15px; 
+        width: auto; 
+        margin: 5px 0;
     }
 }
 
-            .cart-item {
-                flex-direction: column; /* Stack the items vertically */
-                align-items: flex-start;
-                padding: 15px;
-            }
-
-            .cart-item img {
-                width: 40px;
-                height: 40px; /* Adjust the image size for better mobile experience */
-            }
-
-            .modal-content {
-                width: 90%; /* Make the modal width responsive */
-                padding: 15px;
-            }
-
-            .quantity-btn {
-                width: 25px;
-                height: 25px; /* Smaller buttons for mobile */
-            }
-
-            .quantity-input {
-                width: 30px;
-                font-size: 14px; /* Adjust input field size */
-            }
-        
-
-        /* Ensure the modal content is centered on mobile */
-        @media (max-width: 767px) {
-            .modal-content {
-                margin: 10% auto;
-                padding: 15px;
-            }
-        }
     </style>
 </head>
 <body class="main-layout product_page">
@@ -190,8 +196,6 @@
 <div class="loader_bg">
     <div class="loader"><img src="images/loading.gif" alt="#" /></div>
 </div>
-<!-- end loader -->
-<!-- header -->
 <header>
     <div class="header">
         <div class="head_top">
@@ -316,7 +320,6 @@
     </div>
 </footer>
 <!-- end footer -->
-
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
@@ -326,13 +329,17 @@
 <script src="js/custom.js"></script>
 
 <script>
-    function loadCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartItemsDiv = document.getElementById('cartItems');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Function to render cart and update total price
+    function renderCart() {
+        const cartItemsDiv = document.getElementById('cartItems');
+        const totalPriceElement = document.getElementById('totalPrice');
         let totalPrice = 0;
 
         if (cart.length === 0) {
             cartItemsDiv.innerHTML = "<p>Səbətiniz boşdur</p>";
+            totalPriceElement.textContent = 'Cəmi: 0₼';
         } else {
             cartItemsDiv.innerHTML = cart.map((item, index) => {
                 totalPrice += item.price * item.quantity;
@@ -353,65 +360,73 @@
                     </div>
                 `;
             }).join('');
+            totalPriceElement.textContent = `Cəmi: ${totalPrice.toFixed(2)}₼`;
         }
-
-        // Display total price
-        document.getElementById('totalPrice').textContent = `Cəmi: ${totalPrice.toFixed(2)}₼`;
     }
 
     // Update item quantity
     function updateQuantity(index, action) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let item = cart[index];
-        let currentQuantity = item.quantity;
-
         if (action === 'increase') {
-            currentQuantity++;
-        } else if (action === 'decrease' && currentQuantity > 1) {
-            currentQuantity--;
+            cart[index].quantity++;
+        } else if (action === 'decrease' && cart[index].quantity > 1) {
+            cart[index].quantity--;
         }
-
-        cart[index].quantity = currentQuantity;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        loadCart();  // Reload the cart to update the total price
+        updateLocalStorage();
+        renderCart();
     }
 
+    // Remove item from cart
     function removeItem(index) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        loadCart();  // Reload the cart to update the total price
+        updateLocalStorage();
+        renderCart();
     }
 
+    // Update the localStorage and avoid unnecessary reflows
+    function updateLocalStorage() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Open modal
     function openModal() {
         document.getElementById('myModal').style.display = "block";
     }
 
+    // Close modal
     function closeModal() {
         document.getElementById('myModal').style.display = "none";
     }
 
+    // Submit the order and clear cart
     function submitOrder(event) {
         event.preventDefault();
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartDetails = cart.map(item => `${item.name}: ${item.quantity} ədəd x ${item.price}₼`).join("\n");
         let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
         document.querySelector('textarea[name="cartDetails"]').value = cartDetails;
         document.querySelector('textarea[name="totalPrice"]').value = totalPrice;
 
-        // Submit the form to Formsubmit.co
+        // Submit the form
         event.target.submit();
+
+        // Clear the cart from localStorage after submission
+        cart = [];
+        updateLocalStorage();
+        renderCart();
     }
-function clearCart() {
-    localStorage.removeItem('cart');  // Removes the cart from localStorage
-    alert("Səbət təmizləndi!");  // Optional: Shows an alert to notify the user
-    loadCart();  // Reloads the cart to update the page
-}
 
+    // Clear the cart
+    function clearCart() {
+        cart = [];
+        updateLocalStorage();
+        renderCart();
+        alert("Səbət təmizləndi!");
+    }
 
-    window.onload = loadCart;
+    // Initial load
+    window.onload = renderCart;
 </script>
+
 </body>
 </html>
