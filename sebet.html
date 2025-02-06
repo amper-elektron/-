@@ -135,7 +135,7 @@
                               <li> <a href="index.html">Əsas</a> </li>
                               <li> <a href="about.html">Haqqımızda</a> </li>
                               <li> <a href="product.html">Məhsullar</a></li>
-                              <li class="active"> <a href="sebet.html">Sebet</a> </li>
+                              <li class="active"> <a href="sebet.html">Səbət</a> </li>
                            </ul>
                         </nav>
                      </div>
@@ -172,6 +172,7 @@
                            <th>Şəkil</th>
                            <th>Məhsul Adı</th>
                            <th>Say</th>
+                           <th>Qiymət</th>
                            <th>Sil</th>
                         </tr>
                      </thead>
@@ -179,6 +180,7 @@
                         <!-- Cart items will be populated here dynamically -->
                      </tbody>
                   </table>
+                  <p id="totalPrice">Cəmi: 0₼</p>                  
                   <button onclick="clearCart()" class="back-btn">Səbəti Təmizlə</button>
                   <button class="back-btn" onclick="window.history.back();">Öncəki Səhifə</button>
                </div>
@@ -226,62 +228,68 @@
       <script src="js/custom.js"></script>
 
       <script>
-         // Load cart items from localStorage
          function loadCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let cartItemsDiv = document.getElementById('cartItems');
-            if (cart.length === 0) {
-                cartItemsDiv.innerHTML = "<tr><td colspan='4'>Səbətiniz boşdur</td></tr>";
-            } else {
-                cartItemsDiv.innerHTML = cart.map((item, index) => {
-                    return `
-                        <tr>
-                            <td><img src="icon/${item}.png" alt="${item}" width="50" height="50"></td>
-                            <td class="product-name">${item}</td>
-                            <td>
-                                <button class="quantity-btn" onclick="updateQuantity(${index}, 'decrease')">-</button>
-                                <input type="text" class="quantity-input" value="1" readonly>
-                                <button class="quantity-btn" onclick="updateQuantity(${index}, 'increase')">+</button>
-                            </td>
-                            <td><button class="delete-btn" onclick="removeItem(${index})">Sil</button></td>
-                        </tr>
-                    `;
-                }).join('');
-            }
-         }
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+   let cartItemsDiv = document.getElementById('cartItems');
+   let totalPrice = 0;
+
+   if (cart.length === 0) {
+      cartItemsDiv.innerHTML = "<tr><td colspan='5'>Səbətiniz boşdur</td></tr>";
+   } else {
+      cartItemsDiv.innerHTML = cart.map((item, index) => {
+         totalPrice += item.price * item.quantity;
+         return `
+            <tr>
+               <td><img src="icon/${item.name}.png" alt="${item.name}" width="50" height="50"></td>
+               <td class="product-name">${item.name}</td>
+               <td>
+                  <button class="quantity-btn" onclick="updateQuantity(${index}, 'decrease')">-</button>
+                  <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                  <button class="quantity-btn" onclick="updateQuantity(${index}, 'increase')">+</button>
+               </td>
+               <td>${item.price}₼</td>
+               <td><button class="delete-btn" onclick="removeItem(${index})">Sil</button></td>
+            </tr>
+         `;
+      }).join('');
+   }
+
+   // Display total price
+   document.getElementById('totalPrice').textContent = `Cəmi: ${totalPrice.toFixed(2)}₼`;
+}
 
          // Update item quantity
          function updateQuantity(index, action) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let item = cart[index];
-            let quantityInput = document.querySelectorAll('.quantity-input')[index];
-            let currentQuantity = parseInt(quantityInput.value);
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+   let item = cart[index];
+   let quantityInput = document.querySelectorAll('.quantity-input')[index];
+   let currentQuantity = parseInt(quantityInput.value);
 
-            if (action === 'increase') {
-                currentQuantity++;
-            } else if (action === 'decrease' && currentQuantity > 1) {
-                currentQuantity--;
-            }
+   if (action === 'increase') {
+      currentQuantity++;
+   } else if (action === 'decrease' && currentQuantity > 1) {
+      currentQuantity--;
+   }
 
-            quantityInput.value = currentQuantity;
-            cart[index].quantity = currentQuantity;
-            localStorage.setItem('cart', JSON.stringify(cart));
-         }
+   quantityInput.value = currentQuantity;
+   cart[index].quantity = currentQuantity;
+   localStorage.setItem('cart', JSON.stringify(cart));
+   loadCart();  // Reload the cart to update the total price
+}
+function removeItem(index) {
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+   cart.splice(index, 1);
+   localStorage.setItem('cart', JSON.stringify(cart));
+   loadCart();  // Reload the cart to update the total price
+}
 
-         
-         function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart();
-         }
 
-         // Clear the cart
-         function clearCart() {
-            localStorage.removeItem('cart');
-            alert("Səbət təmizləndi!");
-            loadCart();
-         }
+function clearCart() {
+   localStorage.removeItem('cart');
+   alert("Səbət təmizləndi!");
+   loadCart();  // Reload the cart to reset the total price
+}
+
 
          window.onload = loadCart;
       </script>
