@@ -138,7 +138,51 @@
         .green-btn:hover {
             opacity: 0.8;
         }
+        /* For mobile screens */
+@media (max-width: 767px) {
+    .green-btn {
+        padding: 8px 15px; /* Reduce padding */
+        font-size: 16px; /* Make the font size smaller */
+        width: 100%; /* Make the button fill the width */
+    }
+
+    .cart-item {
+        flex-direction: column; /* Stack the items vertically */
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .cart-item img {
+        width: 40px;
+        height: 40px; /* Adjust the image size for better mobile experience */
+    }
+
+    .modal-content {
+        width: 90%; /* Make the modal width responsive */
+        padding: 15px;
+    }
+
+    .quantity-btn {
+        width: 10px;
+        height: 10px; /* Smaller buttons for mobile */
+    }
+
+    .quantity-input {
+        width: 30px;
+        font-size: 14px; /* Adjust input field size */
+    }
+}
+
+/* Ensure the modal content is centered on mobile */
+@media (max-width: 767px) {
+    .modal-content {
+        margin: 10% auto;
+        padding: 15px;
+    }
+}
+
     </style>
+    
 </head>
 <body class="main-layout product_page">
 <!-- loader -->
