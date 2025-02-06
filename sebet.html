@@ -214,7 +214,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="cartItems"></div>
-                <p id="totalPrice" class="cart-total">Ümumi Məbləğ: 0₼</p>
+                <p id="totalPrice" class="cart-total">Cəmi: 0₼</p>
                 <button onclick="clearCart()" class="green-btn">Səbəti Təmizlə</button>
                 <button onclick="openModal()" class="green-btn">Səbəti Təsdiqlə</button>
             </div>
@@ -231,10 +231,10 @@
             <input type="text" name="Ad" placeholder="Ad" required><br><br>
             <input type="text" name="Soyad" placeholder="Soyad" required><br><br>
             <input type="text" name="Mobil Nömrə" placeholder="Mobil Nömrə" required><br><br>
-            <textarea name="Məhsullar" style="display:none;"></textarea>
-            <textarea name="Ümumi Məbləğ" style="display:none;"></textarea>
+            <textarea name="cartDetails" style="display:none;"></textarea>
+            <textarea name="totalPrice" style="display:none;"></textarea>
             <!-- Hidden fields for Formsubmit -->
-            <input type="hidden" name="_next" value="tesekkur.html"> <!-- Add your thank-you page URL -->
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html"> <!-- Add your thank-you page URL -->
             <input type="hidden" name="_subject" value="Yeni Sifariş Alındı"> <!-- Customize the email subject -->
             <input type="submit" value="Göndər" class="green-btn">
         </form>
@@ -347,18 +347,35 @@
     }
 
     function submitOrder(event) {
-        event.preventDefault();
+    event.preventDefault();  // Prevent default form submission
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartDetails = cart.map(item => `${item.name}: ${item.quantity} ədəd x ${item.price}₼`).join("\n");
-        let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartDetails = cart.map(item => `${item.name}: ${item.quantity} ədəd x ${item.price}₼`).join("\n");
+    let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-        document.querySelector('textarea[name="cartDetails"]').value = cartDetails;
-        document.querySelector('textarea[name="totalPrice"]').value = totalPrice;
+    // Prepare the data to be sent
+    let orderData = new FormData(event.target);
+    orderData.append('cartDetails', cartDetails);
+    orderData.append('totalPrice', totalPrice);
 
-        // Submit the form to Formsubmit.co
-        event.target.submit();
-    }
+    // Use fetch() to send the form data asynchronously
+    fetch('https://formsubmit.co/omrmmmdli736@gmail.com', {
+        method: 'POST',
+        body: orderData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Sifariş göndərildi!');
+        localStorage.removeItem('cart');  // Clear the cart after successful order
+        loadCart();  // Reload the cart (it will now be empty)
+        closeModal();  // Close the modal
+    })
+    .catch(error => {
+        alert('Sifariş göndərilmədi, xahiş olunur yenidən cəhd edin.');
+        console.error('Error submitting order:', error);
+    });
+}
+
     // Function to clear the cart
 function clearCart() {
     localStorage.removeItem('cart');  // Removes the cart from localStorage
