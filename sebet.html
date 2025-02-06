@@ -392,34 +392,18 @@
     }
 
     function submitOrder(event) {
-    event.preventDefault();  // Prevent default form submission
+        event.preventDefault();
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let cartDetails = cart.map(item => `${item.name}: ${item.quantity} ədəd x ${item.price}₼`).join("\n");
-    let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartDetails = cart.map(item => `${item.name}: ${item.quantity} ədəd x ${item.price}₼`).join("\n");
+        let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    // Prepare the data to be sent
-    let orderData = new FormData(event.target);
-    orderData.append('cartDetails', cartDetails);
-    orderData.append('totalPrice', totalPrice);
+        document.querySelector('textarea[name="cartDetails"]').value = cartDetails;
+        document.querySelector('textarea[name="totalPrice"]').value = totalPrice;
 
-    // Use fetch() to send the form data asynchronously
-    fetch('https://formsubmit.co/omrmmmdli736@gmail.com', {
-        method: 'POST',
-        body: orderData
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Sifariş göndərildi!');
-        localStorage.removeItem('cart');  // Clear the cart after successful order
-        loadCart();  // Reload the cart (it will now be empty)
-        closeModal();  // Close the modal
-    })
-    .catch(error => {
-        alert('Sifariş göndərilmədi, xahiş olunur yenidən cəhd edin.');
-        console.error('Error submitting order:', error);
-    });
-}
+        // Submit the form to Formsubmit.co
+        event.target.submit();
+    }
 function clearCart() {
     localStorage.removeItem('cart');  // Removes the cart from localStorage
     alert("Səbət təmizləndi!");  // Optional: Shows an alert to notify the user
