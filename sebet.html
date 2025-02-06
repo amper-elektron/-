@@ -138,49 +138,51 @@
         .green-btn:hover {
             opacity: 0.8;
         }
-        /* For mobile screens */
-@media (max-width: 767px) {
+        @media (max-width: 767px) {
     .green-btn {
-        padding: 8px 15px; /* Reduce padding */
-        font-size: 16px; /* Make the font size smaller */
-        width: 100%; /* Make the button fill the width */
-    }
-
-    .cart-item {
-        flex-direction: column; /* Stack the items vertically */
-        align-items: flex-start;
-        padding: 15px;
-    }
-
-    .cart-item img {
-        width: 40px;
-        height: 40px; /* Adjust the image size for better mobile experience */
-    }
-
-    .modal-content {
-        width: 90%; /* Make the modal width responsive */
-        padding: 15px;
-    }
-
-    .quantity-btn {
-        width: 10px;
-        height: 10px; /* Smaller buttons for mobile */
-    }
-
-    .quantity-input {
-        width: 30px;
-        font-size: 14px; /* Adjust input field size */
+        padding: 10px 20px; /* Adjust padding to make the button more compact */
+        font-size: 14px; /* Smaller font size */
+        width: auto; /* Let the button size adjust based on content */
+        display: inline-block; /* Ensure buttons don't take up the entire width */
+        margin: 5px 0; /* Add some space between the buttons */
+        border-radius: 5px; /* Optional: Make the button corners rounded */
     }
 }
 
-/* Ensure the modal content is centered on mobile */
-@media (max-width: 767px) {
-    .modal-content {
-        margin: 10% auto;
-        padding: 15px;
-    }
-}
+            .cart-item {
+                flex-direction: column; /* Stack the items vertically */
+                align-items: flex-start;
+                padding: 15px;
+            }
 
+            .cart-item img {
+                width: 40px;
+                height: 40px; /* Adjust the image size for better mobile experience */
+            }
+
+            .modal-content {
+                width: 90%; /* Make the modal width responsive */
+                padding: 15px;
+            }
+
+            .quantity-btn {
+                width: 25px;
+                height: 25px; /* Smaller buttons for mobile */
+            }
+
+            .quantity-input {
+                width: 30px;
+                font-size: 14px; /* Adjust input field size */
+            }
+        }
+
+        /* Ensure the modal content is centered on mobile */
+        @media (max-width: 767px) {
+            .modal-content {
+                margin: 10% auto;
+                padding: 15px;
+            }
+        }
     </style>
     
 </head>
@@ -270,7 +272,7 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Səbəti Təsdiqle</h3>
+        <h3>Səbəti Təsdiqlə</h3>
         <form id="orderForm" action="https://formsubmit.co/omrmmmdli736@gmail.com" method="POST" onsubmit="submitOrder(event)">
             <input type="text" name="Ad" placeholder="Ad" required><br><br>
             <input type="text" name="Soyad" placeholder="Soyad" required><br><br>
