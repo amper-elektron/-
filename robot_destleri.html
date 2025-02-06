@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>lighten</title>
+      <title>Robot dəstləri</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -96,7 +96,8 @@
                               <li> <a href="index.html">Əsas</a> </li>
                               <li> <a href="about.html">Haqqımızda</a> </li>
                               <li class="active"> <a href="product.html">Məhsullar</a></li>
-                              <li> <a href="contact.html">Əlaqə</a> </li>
+                              <li> <a href="sebet.html">Səbət</a></li>
+                              <li class="mean-last"> <a href="#"></a> </li>
                            </ul>
                         </nav>
                      </div>
@@ -148,26 +149,26 @@
                <div class="row">
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/line.png"/></i>
+                        <i><img src="icon/Line Follower.png"/></i>
                         <h3>Line Follower</h3>
-                        <span></span>
-                        <button class="service-btn" onclick="window.location.href='#';">Səbətə at🛒</button>
+                        <span>10₼</span>
+                        <button onclick="addToCart('Line Follower')">Səbətə at 🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
                         <i><img src="icon/sumo.png"/></i>
                         <h3>Sumo</h3>
-                        <span></span>
-                        <button class="service-btn" onclick="window.location.href='#';">Səbətə at🛒</button>
+                        <span>5₼</span>
+                        <button onclick="addToCart('Sumo')">Səbətə at 🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
                         <i><img src="icon/dron.png"/></i>
                         <h3>Dron</h3>
-                        <span></span>
-                        <button class="service-btn" onclick="window.location.href='#';">Səbətə at🛒</button>
+                        <span>30₼</span>
+                        <<button onclick="addToCart('Dron')">Səbətə at 🛒</button>
                      </div>
                   </div>
                </div>
@@ -217,21 +218,12 @@
       <script src="js/custom.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         $(".zoom").hover(function(){
-         
-         $(this).addClass('transition');
-         }, function(){
-         
-         $(this).removeClass('transition');
-         });
-         });
-         
+         function addToCart(productName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + " səbətə əlavə edildi!");
+         }
       </script> 
    </body>
 </html>
