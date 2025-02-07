@@ -29,6 +29,20 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
       <style>
+         .search-box {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+#searchInput {
+   width: 70%;
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   margin-top: 10px;
+}
+
           .green-round-btn {
    font-size: 10px;
    padding: 10px;
@@ -154,6 +168,9 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="title">
+                     <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Məhsul axtar..." onkeyup="searchProduct()">
+                     </div>
                      
                      <span>Robot
                         Dəstləri
@@ -261,6 +278,22 @@
    
    alert(productName + " səbətə əlavə edildi!");
 }
+function searchProduct() {
+   let input = document.getElementById('searchInput').value.toLowerCase(); // Get the search value and convert to lowercase
+   let productBoxes = document.querySelectorAll('.product-box'); // Get all product boxes
+
+   productBoxes.forEach(function(productBox) {
+      let productName = productBox.querySelector('h3').innerText.toLowerCase(); // Get the product name and convert to lowercase
+
+      // Show the product if the name matches the input, hide it if not
+      if (productName.indexOf(input) > -1) {
+         productBox.style.display = ''; // Show product
+      } else {
+         productBox.style.display = 'none'; // Hide product
+      }
+   });
+}
+
       </script> 
    </body>
 </html>
