@@ -29,6 +29,30 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
       <style>
+          .green-round-btn {
+   font-size: 10px;
+   padding: 10px;
+   background-color: #0f5316;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   cursor: pointer;
+   display: inline-block;
+   margin-top: 18px;
+}
+
+.green-round-btn:hover {
+   opacity: 0.5;
+}
+
+.clickable-image {
+   cursor: pointer;
+   transition: transform 0.2s ease;
+}
+
+.clickable-image:hover {
+   transform: scale(1.1);
+}
          .go-back {
             margin-top: px; /* Yuxarıdan bir az boşluq */
             text-align: left;
@@ -149,26 +173,26 @@
                <div class="row">
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/Line Follower.png"/></i>
+                        <i><img src="icon/Line Follower.png" alt="Line Follower" onclick="addToCart('Line Follower', 10.00)" class="clickable-image"/></i>
                         <h3>Line Follower</h3>
                         <span>10₼</span>
-                        <button onclick="addToCart('Line Follower',10.0)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/Sumo.png"/></i>
+                        <i><img src="icon/Sumo.png" alt="Sumo" onclick="addToCart('Sumo', 5.00)" class="clickable-image"/></i>
                         <h3>Sumo</h3>
                         <span>5₼</span>
-                        <button onclick="addToCart('Sumo',5.0)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/Dron.png"/></i>
+                        <i><img src="icon/Dron.png" alt="Line Follower" onclick="addToCart('Dron', 30.00)" class="clickable-image"/></i>
                         <h3>Dron</h3>
                         <span>30₼</span>
-                        <<button onclick="addToCart('Dron', 30.0)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                </div>
