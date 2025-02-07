@@ -50,6 +50,20 @@
 .clickable-image:hover {
    transform: scale(1.1);
 }
+.search-box {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+#searchInput {
+   width: 70%;
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   margin-top: 10px;
+}
+
          .go-back {
             margin-top: px; /* Yuxarıdan bir az boşluq */
             text-align: left;
@@ -151,6 +165,9 @@
                   <div class="title">
                      <span>Elektron Komponentlər</span>
                   </div>
+                  <div class="search-box">
+                     <input type="text" id="searchInput" placeholder="Məhsul axtar..." onkeyup="searchProduct()">
+                  </div>                  
                   <div class="go-back">
                      <button class="back-btn" onclick="window.history.back();">Öncəki Səhifə</button>
                   </div>
@@ -250,6 +267,22 @@
    
    alert(productName + " səbətə əlavə edildi!");
 }
+function searchProduct() {
+   let input = document.getElementById('searchInput').value.toLowerCase(); // Get the search value and convert to lowercase
+   let productBoxes = document.querySelectorAll('.product-box'); // Get all product boxes
+
+   productBoxes.forEach(function(productBox) {
+      let productName = productBox.querySelector('h3').innerText.toLowerCase(); // Get the product name and convert to lowercase
+
+      // Show the product if the name matches the input, hide it if not
+      if (productName.indexOf(input) > -1) {
+         productBox.style.display = ''; // Show product
+      } else {
+         productBox.style.display = 'none'; // Hide product
+      }
+   });
+}
+
 
       </script> 
    </body>
