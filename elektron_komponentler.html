@@ -26,6 +26,30 @@
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <style>
+         .green-round-btn {
+   font-size: 10px;
+   padding: 10px;
+   background-color: #0f5316;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   cursor: pointer;
+   display: inline-block;
+   margin-top: 18px;
+}
+
+.green-round-btn:hover {
+   opacity: 0.5;
+}
+
+.clickable-image {
+   cursor: pointer;
+   transition: transform 0.2s ease;
+}
+
+.clickable-image:hover {
+   transform: scale(1.1);
+}
          .go-back {
             margin-top: px; /* Yuxarıdan bir az boşluq */
             text-align: left;
@@ -140,32 +164,33 @@
                <div class="row">
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/Diod.png"/></i>
+                        <i><img src="icon/Diod.png" alt="Diod" onclick="addToCart('Diod', 0.35)" class="clickable-image"/></i>
                         <h3>Diod</h3>
                         <span>0.35₼</span>
-                        <button onclick="addToCart('Diod', 0.35)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/Rezistor.png"/></i>
+                        <i><img src="icon/Rezistor.png" alt="Rezistor" onclick="addToCart('Rezistor', 0.4)" class="clickable-image"/></i>
                         <h3>Rezistor</h3>
                         <span>0.4₼</span>
-                        <button onclick="addToCart('Rezistor', 0.4)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/LED.png"/></i>
+                        <i><img src="icon/LED.png" alt="LED" onclick="addToCart('LED', 0.7)" class="clickable-image"/></i>
                         <h3>LED</h3>
                         <span>0.7₼</span>
-                        <button onclick="addToCart('LED', 0.7)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
+      
       
       <footer>
          <div class="footer">
