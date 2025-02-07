@@ -382,7 +382,7 @@
         renderCart();
     }
 
-    // Update the localStorage and avoid unnecessary reflows
+    // Update the localStorage
     function updateLocalStorage() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
@@ -407,13 +407,16 @@
         document.querySelector('textarea[name="cartDetails"]').value = cartDetails;
         document.querySelector('textarea[name="totalPrice"]').value = totalPrice;
 
-        // Submit the form
+        // Submit the form immediately
         event.target.submit();
 
         // Clear the cart from localStorage after submission
         cart = [];
         updateLocalStorage();
         renderCart();
+
+        // Optional: Close modal immediately after submitting
+        closeModal();
     }
 
     // Clear the cart
