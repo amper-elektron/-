@@ -29,6 +29,26 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
       <style>
+          .green-round-btn {
+   font-size: 10px;
+   padding: 10px;
+   background-color: #0f5316;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   cursor: pointer;
+   display: inline-block;
+   margin-top: 18px;
+}
+
+.green-round-btn:hover {
+   opacity: 0.5;
+}
+
+.clickable-image {
+   cursor: pointer;
+   transition: transform 0.2s ease;
+}
          .go-back {
             margin-top: px; /* Yuxarıdan bir az boşluq */
             text-align: left;
@@ -149,10 +169,10 @@
                <div class="row">
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                      <div class="product-box">
-                        <i><img src="icon/Plata Təmiri.png"/></i>
+                        <i><img src="icon/Plata Təmiri.png" alt="Diod" onclick="addToCart('Plata Təmiri', 3.0)" class="clickable-image"/></i>
                         <h3>Plata Təmiri</h3>
                         <span>3₼</span>
-                        <button onclick="addToCart('Plata Təmiri',3.0)">Səbətə at 🛒</button>
+                        <button class="green-round-btn">🛒</button>
                      </div>
                   </div>
                </div>
